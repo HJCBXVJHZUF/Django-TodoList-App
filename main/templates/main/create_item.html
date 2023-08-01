@@ -1,0 +1,12 @@
+{% extends 'main/base.html' %}
+
+{% block title %} Create Item Page {% endblock %}
+
+{% block content %}
+<h1>Add Your Items</h1>
+<form method="post" action="/items/">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit" name="save">Enter</button>
+</form>
+{% endblock %}

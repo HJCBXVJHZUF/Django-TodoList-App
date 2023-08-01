@@ -1,0 +1,62 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+ToDo Page
+{% endblock %}
+
+{% block content %}
+<h1>Your ToDoList is "{{tdl.name}}"</h1>
+<form method="post" action="#">
+    {% csrf_token %}
+    {% for item in tdl.item_set.all %}
+    <div class="input-group mb-3 align-items-center">
+        <div class="input-group-prepend">
+            <div class="input-group-text">
+                {% if item.complete == False %}
+                    <input type="checkbox" name="c{{item.id}}" value="clicked">
+                {% else %}
+                    <input type="checkbox" name="c{{item.id}}" value="clicked" checked>
+                {% endif %}
+            </div>
+        </div>
+        <input type="text" value="{{item.text}}" class="form-control">
+    </div>
+    {% endfor %}
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <button type="submit" value="addItem" name="addItem" class="btn btn-success">Add Item</button>
+        </div>
+        <input type="text" name="text">
+    </div>
+
+    <button type="submit" value="save" name="save" class="btn btn-success">Save</button>
+</form>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
